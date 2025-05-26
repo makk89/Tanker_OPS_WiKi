@@ -1,2 +1,2 @@
-# Tanker_OPS_WiKi
-Tanker operations repository
+# GESCO-OPS_WiKi
+Platform provides a data repository for Superintendent & Vessel managers 

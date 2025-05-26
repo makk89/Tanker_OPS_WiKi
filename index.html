@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Great Eastern Commercial Operations – Superintendent’s Decision Support Wiki</title>
+  <style>
+    :root{
+      --navy:#002B5C;
+      --white:#ffffff;
+      --gray:#f5f5f5;
+      --accent:#ff7100;
+      --text:#333333;
+      --hover:#e1e7f0;
+    }
+    html,body{margin:0;font-family:"Trebuchet MS","Century Gothic",Arial,sans-serif;background:var(--gray);color:var(--text);}    
+    .wrapper{display:flex;min-height:100vh;}
+
+    /* ------------ Sidebar ------------- */
+    .sidebar{width:auto;flex-shrink:0;background:var(--navy);color:var(--white);padding:1rem 0;overflow-y:auto;position:relative;z-index:10;}
+    .logo{display:flex;align-items:center;gap:.5rem;padding:0 1.5rem 1rem;}
+    .logo img{width:60px;height:auto;}
+    .logo span{font-size:1.1rem;font-weight:600;}
+
+    nav details{position:relative;border-top:1px solid rgba(255,255,255,.15);}  
+    nav summary{list-style:none;cursor:pointer;font-weight:600;padding:.6rem 1.5rem;user-select:none;display:flex;align-items:center;gap:.4rem;}
+
+    /* Arrow indicator */
+    nav summary::after{content:"\25B6";transition:transform .25s ease;margin-left:auto;font-size:.6rem;}    
+    nav details[open] > summary::after{transform:rotate(90deg);}  
+
+    /* Show submenu on hover/focus and rotate arrow (CSS‑only fallback) */
+    nav details:hover > ul,
+    nav details:focus-within > ul{
+      display:block;
+    }
+    nav details:hover > summary::after,
+    nav details:focus-within > summary::after{
+      transform:rotate(90deg);
+    }
+
+    /* Fly‑out submenu (now inside the sidebar column) */
+    nav ul{
+      list-style:none;
+      padding:0 0 0 1rem; /* slight indent */
+      margin:0;
+      position:static;
+      min-width:100%;
+      background:transparent;
+      border-left:none;
+      display:none;
+    }
+
+    nav li a{display:block;padding:.45rem 0;font-size:.9rem;color:var(--white);text-decoration:none;opacity:.85;transition:background .2s ease;white-space:nowrap;}
+    nav li a:hover,nav li a:focus{background:rgba(255,255,255,.12);}  
+
+    /* Ensure summary links inherit sidebar link style */
+    nav summary a {
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      width: 100%;
+    }
+
+    /* ------------ Main ------------- */
+    main{flex:1;padding:0;display:flex;align-items:center;justify-content:center;}
+
+    /* Home Hero */
+    .hero{width:100%;max-width:960px;margin:auto;text-align:center;padding:6vh 2rem;}
+    .hero-logo{width:auto;height:240px;margin-bottom:1.5rem;}
+    .hero h1{margin:0;font-size:3rem;color:var(--white);font-weight:700;}
+    .hero p{margin:1rem 0 2.5rem;color:var(--white);font-size:1.25rem;opacity:.92;}
+
+    /* Gradient background for hero */
+    .hero-bg{background:linear-gradient(135deg,#00587e 0%,#004370 100%);}  
+
+    /* Search Bar */
+    .search-form{display:flex;justify-content:center;}
+    .search-input{width:60%;max-width:640px;padding:1rem 1.25rem;font-size:1.25rem;border:3px solid var(--white);border-radius:8px;outline:none;font-family:"Trebuchet MS","Century Gothic",Arial,sans-serif;}
+    .search-input::placeholder{color:#7f7f7f;}
+
+    /* Footer */
+    footer{text-align:center;padding:1rem;font-size:.8rem;color:var(--white);opacity:.8;}
+
+    /* Responsive adjustments */
+    @media(max-width:768px){
+      .sidebar{width:220px;}
+      .hero h1{font-size:2.2rem;}
+      .search-input{width:90%;font-size:1.1rem;}
+    }
+  </style>
+</head>
+<body class="hero-bg">
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="logo.png" alt="Great Eastern Logo">
+        <span>GESCO Ops Wiki</span>
+      </div>
+      <nav>
+        <details>
+          <summary>Home</summary>
+        </details>
+        <details>
+          <summary><a href="dashboards.html">Dashboards</a></summary>
+          <ul>
+            <li><a href="#">Operations Dashboard</a></li>
+            <li><a href="#">Vetting</a></li>
+            <li><a href="#">Tanker Issues</a></li>
+            <li><a href="#">Exceptions</a></li>
+            <li><a href="#">Claims</a></li>
+            <li><a href="#">Provisions</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="tracker.html">Trackers</a></summary>
+          <ul>
+            <li><a href="#">Pool Issue Tracker</a></li>
+            <li><a href="#">Bunker Issue Tracker</a></li>
+            <li><a href="#">Ops Internal Audit</a></li>
+            <li><a href="#">Dry-Dock & Hull</a></li>
+            <li><a href="#">Commercial Exposure</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="guidelines.html">Guidelines</a></summary>
+          <ul>
+            <li><a href="#">SOP's</a></li>
+            <li><a href="#">Critical Processes</a></li>
+            <li><a href="#">Guidelines to Masters</a></li>
+            <li><a href="#">Guidelines to Operators</a></li>
+            <li><a href="#">Inter‑Dept Protocols</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="fleet alerts.html">Fleet alerts</a></summary>
+          <ul>
+            <li><a href="#">Fleet alerts – Ext</a></li>
+            <li><a href="#">Fleet alerts – Int</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="contracts.html">Contracts</a></summary>
+          <ul>
+            <li><a href="#">Towage</a></li>
+            <li><a href="#">Agency</a></li>
+            <li><a href="#">Armed Guards</a></li>
+            <li><a href="#">Pilotage</a></li>
+            <li><a href="#">Slop Disposal</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="email templates.html"> Email Templates</a></summary>
+          <ul>
+            <li><a href="#">US Ops Template</a></li>
+            <li><a href="#">Disclaimers</a></li>
+            <li><a href="#">Stowage Plan Request</a></li>
+            <li><a href="#">BL Redoc</a></li>
+            <li><a href="#">EU Advance Cargo</a></li>
+            <li><a href="#">Agency Appointment</a></li>
+            <li><a href="#">Bunker Stem</a></li>
+            <li><a href="#">Pre-arrival Questionnaire </a></li>
+            <li><a href="#">Tank Cleaning</a></li>
+            <li><a href="#">BL Verification</a></li>
+            <li><a href="#">Freight Invoice</a></li>
+            <li><a href="#">Ops – Port Info</a></li>
+            <li><a href="#">Vessel Handover</a></li>
+            <li><a href="#">Incident Reporting</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="critical operation.html"> Critical Operations</a></summary>
+          <ul>
+            <li><a href="#">Co‑Mingling </a></li>
+            <li><a href="#">Cargo Segregation</a></li>
+            <li><a href="#">Cargo Additivation</a></li>
+            <li><a href="#">Cargo Recirculation</a></li>
+            <li><a href="#">Excessive ROB (DPP/Veg Oil)</a></li>
+            <li><a href="#">Line Plug/Flushing</a></li>
+            <li><a href="#">Loading with Single Valve Segregation</a></li>
+            <li><a href="#">Miscellaneous</a></li>
+            <li><a href="#">Tank Cleaning</a></li>
+            <li><a href="#">Bunker Stem</a></li>          
+          </ul>
+        </details>
+        <details>
+          <summary><a href="security.html">Security</a></summary>
+          <ul>
+            <li><a href="#">Protocols</a></li>
+            <li><a href="#">Incident Response</a></li>
+            <li><a href="#">Digital Data Protection</a></li>
+            <li><a href="#">Compliance & Reporting</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="information center.html">Information center</a></summary>
+          <ul>
+            <li><a href="#">Regulatory Updates</a></li>
+            <li><a href="#">Training Materials</a></li>
+            <li><a href="#">Knowledge bank</a></li> 
+            <li><a href="#">Important circulars</a></li>
+            <li><a href="#">Port Data</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="recycle-bin.html">Recycle Bin</a></summary>
+          <ul>
+            <li><a href="#">Deleted Pages</a></li>
+            <li><a href="#">Archived Versions</a></li>
+          </ul>
+        </details>
+      </nav>
+    </aside>
+
+    <!-- Main content: Google-like search -->
+    <main>
+      <section class="hero">
+        <img src="logo.png" alt="Company Flag" class="hero-logo">
+        <h1>Tanker OPS Sharepoint</h1>
+        <p>Search, view, and govern critical commercial operations data.</p>
+        <form class="search-form" action="#" method="GET">
+          <input class="search-input" type="search" placeholder="Search by vessel, voyage, or document" name="q" aria-label="Search">
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Page footer -->
+  <footer>
+    © Great Eastern Shipping Company – Commercial Operations | Ops Support: ops.support@gesco.com
+  </footer>
+
+  <script>
+    /* Fly‑out behaviour: open on hover/focus, close on mouseleave/focusout */
+    document.querySelectorAll('nav details').forEach(det => {
+      const summary = det.querySelector('summary');
+
+      // Open on hover
+      det.addEventListener('mouseenter', () => det.setAttribute('open', ''));
+
+      // Close when pointer leaves submenu tree
+      det.addEventListener('mouseleave', () => det.removeAttribute('open'));
+
+      // Keyboard accessibility
+      summary.addEventListener('focus', () => det.setAttribute('open', ''));
+      summary.addEventListener('blur', e => {
+        if (!det.contains(e.relatedTarget)) det.removeAttribute('open');
+      });
+    });
+  </script>
+</body>
+</html>
